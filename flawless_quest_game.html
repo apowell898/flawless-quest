@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flawless Quest: The Consultant's Trial</title>
+  <style>
+    body {
+      background-color: #1a1a2e;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    #game-container {
+      border: 2px solid #fff;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #0f3460;
+      border-radius: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      background-color: #16213e;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #1a1a2e;
+    }
+    img.scene {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-container">
+    <h1>Flawless Quest</h1>
+    <img id="scene-image" class="scene" src="https://cdn.pixabay.com/photo/2020/01/17/17/27/forest-4773062_1280.jpg" alt="Scene">
+    <p id="story">Welcome, Consultant Mage Elarin. Are you ready to begin your journey?</p>
+    <div id="choices">
+      <button onclick="startForest()">Enter Forest of Contracting</button>
+    </div>
+  </div>
+
+  <script>
+    function startForest() {
+      document.getElementById('scene-image').src = "https://cdn.pixabay.com/photo/2017/09/13/00/17/forest-2744792_1280.jpg";
+      document.getElementById('story').textContent = "The Forest whispers: \"To move forward, one must know their role...\" A druid approaches with a question.";
+      document.getElementById('choices').innerHTML = `
+        <p>Which is NOT part of the contracting phase?</p>
+        <button onclick="checkAnswer('a')">A. Clarifying roles</button>
+        <button onclick="checkAnswer('b')">B. Identifying wants</button>
+        <button onclick="checkAnswer('c')">C. Giving performance feedback</button>
+      `;
+    }
+
+    function checkAnswer(answer) {
+      if(answer === 'c') {
+        document.getElementById('scene-image').src = "https://cdn.pixabay.com/photo/2018/07/25/13/28/swamp-3558890_1280.jpg";
+        document.getElementById('story').textContent = "Correct! You gain the Rune of Roles. Onward to the Swamps of Authenticity.";
+        document.getElementById('choices').innerHTML = '<button onclick="startSwamp()">Enter Swamps of Authenticity</button>';
+      } else {
+        document.getElementById('story').textContent = "Incorrect. Try again: Which is NOT part of the contracting phase?";
+      }
+    }
+
+    function startSwamp() {
+      document.getElementById('scene-image').src = "https://cdn.pixabay.com/photo/2017/01/20/00/30/swamp-1997861_1280.jpg";
+      document.getElementById('story').textContent = "In the swamp, spirits test your truth. One whispers: \"Authenticity is key...\"";
+      document.getElementById('choices').innerHTML = `
+        <p>Which statement reflects authenticity?</p>
+        <button onclick="checkSwampAnswer('a')">A. I agree with everything to keep the peace.</button>
+        <button onclick="checkSwampAnswer('b')">B. I respectfully share my concerns.</button>
+        <button onclick="checkSwampAnswer('c')">C. I avoid hard conversations.</button>
+      `;
+    }
+
+    function checkSwampAnswer(answer) {
+      if(answer === 'b') {
+        document.getElementById('scene-image').src = "https://cdn.pixabay.com/photo/2016/11/23/00/58/fantasy-1850469_1280.jpg";
+        document.getElementById('story').textContent = "Correct! You gain the Crystal of Clarity. You may now face Misalignment the Dragon.";
+        document.getElementById('choices').innerHTML = '<button onclick="finalBoss()">Confront Misalignment</button>';
+      } else {
+        document.getElementById('story').textContent = "The spirits are displeased. Try again: Which statement reflects authenticity?";
+      }
+    }
+
+    function finalBoss() {
+      document.getElementById('scene-image').src = "https://cdn.pixabay.com/photo/2017/10/31/18/20/fantasy-2906871_1280.jpg";
+      document.getElementById('story').textContent = "Misalignment roars: \"You cannot negotiate with fear!\" Choose your approach.";
+      document.getElementById('choices').innerHTML = `
+        <p>How do you begin a successful negotiation?</p>
+        <button onclick="checkFinalAnswer('a')">A. Assume their needs and push your agenda.</button>
+        <button onclick="checkFinalAnswer('b')">B. Open with mutual needs and clear expectations.</button>
+        <button onclick="checkFinalAnswer('c')">C. Avoid clarity to keep things flexible.</button>
+      `;
+    }
+
+    function checkFinalAnswer(answer) {
+      if(answer === 'b') {
+        document.getElementById('scene-image').src = "https://cdn.pixabay.com/photo/2017/02/27/16/14/fantasy-2102120_1280.jpg";
+        document.getElementById('story').textContent = "Misalignment is vanquished! The Amulet of Alignment is whole. You are now a Flawless Consultant.";
+        document.getElementById('choices').innerHTML = '<p>✨ The End ✨</p>';
+      } else {
+        document.getElementById('story').textContent = "Misalignment snarls: \"That's not the way!\" Try again.";
+      }
+    }
+  </script>
+</body>
+</html>
